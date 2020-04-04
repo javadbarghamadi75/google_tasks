@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 
-//Padding
-const double largePadding = 20;
+//Space
+const double bigSpace = 30;
+const double normalSpace = 20;
+const double smallSpace = 10;
+const double verySmallSpace = 5;
 
-//Icon
-const double bigIconSize = 38;
+//Button
+const double normalButtonSize = 40;
+const double smallButtonSize = 24;
+const double verySmallButtonSize = 18;
 
 //Text
-const double verySmallTextSize = 12;
-const double smallTextSize = 18;
 const double largeTextSize = 32;
+const double normalTextSize = 18;
+const double smallTextSize = 16;
+const double verySmallTextSize = 12;
 
 //Color
-const Color backgroundColor = Color(0xff212121);
-const Color buttonColor = Color(0xff9e9e9e);
-const Color bottomAppBarColor = Color(0xff424242);
-const Color textColor = Color(0xffbdbdbd);
+const Color blackColor = Color(0xff212121);
+const Color greyColor = Color(0xff424242);
+const Color lightGreyColor = Color(0xffbdbdbd);
+const Color veryLightGreyColor = Color(0xffe0e0e0);
+const Color lightBlueColor = Color(0xff89b4f8);

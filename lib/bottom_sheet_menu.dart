@@ -5,43 +5,53 @@ class MenuBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgroundColor,
+      decoration: BoxDecoration(
+        color: greyColor,
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(normalSpace),
+          topLeft: Radius.circular(normalSpace),
+        ),
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
             leading: Icon(
               Icons.add,
-              color: textColor,
+              size: smallButtonSize,
+              color: lightGreyColor,
             ),
             title: Text(
               'Creat New List',
               style: TextStyle(
-                color: textColor,
+                fontSize: smallTextSize,
+                color: lightGreyColor,
                 fontFamily: 'CenturyGothic',
               ),
             ),
           ),
           Divider(
             height: 1,
-            color: buttonColor,
+            color: lightGreyColor,
           ),
           ListTile(
             leading: Icon(
               Icons.feedback,
-              color: textColor,
+              size: smallButtonSize,
+              color: lightGreyColor,
             ),
             title: Text(
               'Help and Feedback',
               style: TextStyle(
-                color: textColor,
+                fontSize: smallTextSize,
+                color: lightGreyColor,
                 fontFamily: 'CenturyGothic',
               ),
             ),
           ),
           Divider(
             height: 1,
-            color: buttonColor,
+            color: lightGreyColor,
           ),
           ListTile(
 //            leading: Icon(
@@ -51,14 +61,15 @@ class MenuBottomSheet extends StatelessWidget {
             title: Text(
               'Open-Source Licences',
               style: TextStyle(
-                color: textColor,
+                fontSize: smallTextSize,
+                color: lightGreyColor,
                 fontFamily: 'CenturyGothic',
               ),
             ),
           ),
           Divider(
             height: 1,
-            color: buttonColor,
+            color: lightGreyColor,
           ),
           ListTile(
 //            leading: Icon(
@@ -70,7 +81,7 @@ class MenuBottomSheet extends StatelessWidget {
               child: Text(
                 'Privacy Policy   |   Terms of Service',
                 style: TextStyle(
-                  color: textColor,
+                  color: lightGreyColor,
                   fontSize: verySmallTextSize,
                   fontFamily: 'CenturyGothic',
                 ),

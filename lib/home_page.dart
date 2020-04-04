@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:googletasks/bottom_sheet_create_task.dart';
 import 'package:googletasks/bottom_sheet_menu.dart';
+import 'package:googletasks/bottom_sheet_more_options.dart';
 import 'package:googletasks/res.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,20 +14,20 @@ class _HomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: backgroundColor,
+        backgroundColor: blackColor,
         appBar: AppBar(
           elevation: 0,
           centerTitle: false,
-          backgroundColor: backgroundColor,
+          backgroundColor: blackColor,
           title: Padding(
             padding: const EdgeInsets.only(
-              left: largePadding,
+              left: normalSpace,
             ),
             child: Text(
               'My Tasks',
               style: TextStyle(
                 fontSize: largeTextSize,
-                color: textColor,
+                color: lightGreyColor,
                 fontFamily: 'CenturyGothic',
               ),
             ),
@@ -34,28 +36,37 @@ class _HomePageState extends State<MyHomePage> {
         bottomNavigationBar: BottomAppBar(
 //          notchMargin: 3,
           shape: CircularNotchedRectangle(),
-          color: bottomAppBarColor,
+          color: greyColor,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
                 icon: Icon(
                   Icons.menu,
-                  color: buttonColor,
+                  size: smallButtonSize,
+                  color: lightGreyColor,
                 ),
                 onPressed: () {
                   showModalBottomSheet(
                     context: context,
                     builder: (BuildContext bctx) => MenuBottomSheet(),
+                    backgroundColor: Colors.transparent,
                   );
                 },
               ),
               IconButton(
                 icon: Icon(
                   Icons.more_vert,
-                  color: buttonColor,
+                  size: smallButtonSize,
+                  color: lightGreyColor,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext bctx) => MoreOptionsBottomSheet(),
+                    backgroundColor: Colors.transparent,
+                  );
+                },
               ),
             ],
           ),
@@ -63,12 +74,18 @@ class _HomePageState extends State<MyHomePage> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           elevation: 1,
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (BuildContext bctx) => CreateTaskBottomSheet(),
+              backgroundColor: Colors.transparent,
+            );
+          },
           child: Icon(
             Icons.add,
-            size: bigIconSize,
+            size: normalButtonSize,
           ),
-          backgroundColor: bottomAppBarColor.withOpacity(0.7),
+          backgroundColor: greyColor.withOpacity(0.7),
         ),
       ),
     );
