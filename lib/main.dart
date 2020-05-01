@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:googletasks/database/app_database.dart';
 import 'package:googletasks/res.dart';
+import 'create_list_page.dart';
 import 'home_page.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  AppDatabase.instance = await $FloorAppDatabase
+      .databaseBuilder('google_tasks_database.db')
+      .build();
   runApp(MyApp());
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: blackColor));
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: blackColor));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,8 +21,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Google Tasks',
+      routes: {
+        '/' : (context) => MyHomePage(),
+        '/createListPage' : (context) => CreateListPage(),
+      },
       theme: ThemeData(
-
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -28,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+//      home: MyHomePage(),
     );
   }
 }

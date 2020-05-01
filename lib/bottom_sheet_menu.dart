@@ -15,20 +15,25 @@ class MenuBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          ListTile(
-            leading: Icon(
-              Icons.add,
-              size: smallButtonSize,
-              color: lightGreyColor,
-            ),
-            title: Text(
-              'Creat New List',
-              style: TextStyle(
-                fontSize: smallTextSize,
+          InkWell(
+            child: ListTile(
+              leading: Icon(
+                Icons.add,
+                size: smallButtonSize,
                 color: lightGreyColor,
-                fontFamily: 'CenturyGothic',
+              ),
+              title: Text(
+                'Creat New List',
+                style: TextStyle(
+                  fontSize: smallTextSize,
+                  color: lightGreyColor,
+                  fontFamily: 'CenturyGothic',
+                ),
               ),
             ),
+            onTap: (){
+              Navigator.pushNamed(context, '/createListPage');
+            },
           ),
           Divider(
             height: 1,

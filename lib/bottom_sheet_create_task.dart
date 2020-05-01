@@ -160,6 +160,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
+import 'package:googletasks/database/app_database.dart';
+import 'package:googletasks/database/entity/task_entity.dart';
 import 'package:googletasks/res.dart';
 import 'package:intl/intl.dart';
 
@@ -172,6 +174,8 @@ class _CreateTaskBottomSheetState extends State<CreateTaskBottomSheet> {
   bool _addDetailsVisibility = false;
   DateTime _selectedDate;
   TimeOfDay _selectedTime = TimeOfDay.now();
+  TextEditingController _taskTitleController = TextEditingController();
+  TextEditingController _taskDescriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -354,5 +358,27 @@ class _CreateTaskBottomSheetState extends State<CreateTaskBottomSheet> {
       });
     }
     _dateSelector(context);
+  }
+
+  _saveTask() async {
+    String taskTitle = _taskTitleController.text;
+    if (taskTitle == null || taskTitle.isEmpty) {
+      return;
+    }
+    String taskDescription =
+        _addDetailsVisibility ? _taskDescriptionController.text : null;
+    DateTime selectedDate = _selectedDate;
+    if (selectedDate == null) {
+      selectedDate = DateTime.now();
+    }
+    String dateTime =
+        '${DateFormat.MMMEd().format(selectedDate)} | ${_selectedTime.format(context)}';
+    TaskEntity task = TaskEntity(
+        taskName: taskTitle,
+        taskDetails: taskDescription,
+        taskDateAndTime: dateTime,
+        tasksListId: 1);
+    await AppDatabase.instance.taskDao.insertTask(task);
+    Navigator.pop(context);
   }
 }
