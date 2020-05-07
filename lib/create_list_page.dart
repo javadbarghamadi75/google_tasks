@@ -70,7 +70,7 @@ class _CreateListPageState extends State<CreateListPage> {
       return;
     }
     TasksListEntity taskList = TasksListEntity(listName: listTitle);
-    await AppDatabase.instance.taskListDao.insertTask(taskList);
+    await AppDatabase.instance.taskListDao.insertTasksList(taskList);
     Navigator.pop(context);
   }
 }

@@ -181,7 +181,7 @@ class _$TasksListDao extends TasksListDao {
   final InsertionAdapter<TasksListEntity> _tasksListEntityInsertionAdapter;
 
   @override
-  Future<List<TasksListEntity>> getAllTasksList() async {
+  Future<List<TasksListEntity>> getAllTasksLists() async {
     return _queryAdapter.queryList('SELECT * FROM TasksList',
         mapper: _tasksListMapper);
   }
@@ -195,7 +195,7 @@ class _$TasksListDao extends TasksListDao {
   }
 
   @override
-  Future<void> insertTask(TasksListEntity tasksList) async {
+  Future<void> insertTasksList(TasksListEntity tasksList) async {
     await _tasksListEntityInsertionAdapter.insert(
         tasksList, sqflite.ConflictAlgorithm.abort);
   }

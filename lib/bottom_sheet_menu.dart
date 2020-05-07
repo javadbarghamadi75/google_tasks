@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:googletasks/database/entity/task_list_entity.dart';
 import 'package:googletasks/res.dart';
 
 class MenuBottomSheet extends StatelessWidget {
+  final List<TasksListEntity> tasksLists;
+
+  const MenuBottomSheet({Key key, this.tasksLists}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,6 +20,7 @@ class MenuBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          _getTasksLists(),
           InkWell(
             child: ListTile(
               leading: Icon(
@@ -31,7 +37,7 @@ class MenuBottomSheet extends StatelessWidget {
                 ),
               ),
             ),
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, '/createListPage');
             },
           ),
@@ -95,6 +101,14 @@ class MenuBottomSheet extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _getTasksLists() {
+    return ListView.builder(
+      itemBuilder: (context, index) {
+
+      },
     );
   }
 }
